@@ -92,15 +92,20 @@ li {
 	
 }
 
-.summary:hover {
+@media (hover:hover) {
 	
-	%color:white;
-	%background-color:#404040;
+    .summary:hover {
 	
-	background-color:#FF6E19; 
-	color:white;
-	
+		%color:white;
+		%background-color:#404040;
+		
+		background-color:#FF6E19; 
+		color:white;
+		
+	}
 }
+
+
 
 .summary_hover{
 	
@@ -261,7 +266,8 @@ a {
 .tab{
 	
 	padding: 2px 10px 4px 10px;
-	margin-right:10px;
+	margin-left:5px;
+	margin-right:5px;
 	background-color:#404040;
 	border-radius:5px 5px 0px 0px;
 	-webkit-border-radius:5px 5px 0px 0px;
@@ -338,7 +344,7 @@ option{
 	margin-right: auto;
 	padding-top: 10px; 
 	padding-bottom: 10px; 
-	margin-bottom:30px;
+	margin-bottom:40px;
 	background-color: white;
 	text-align:center;
 	
@@ -370,7 +376,7 @@ option{
 }
 
 
-#forms{
+#contacts{
 	
 	margin:auto;
 	display: flex; 
@@ -381,7 +387,7 @@ option{
 }
 
 
-#forms span{
+#contacts span{
 	margin:auto;
 	text-align:left;
 	padding: 20px;
@@ -390,6 +396,10 @@ option{
 	
 }
 
+.contactname{
+	color:#FF6E19;
+	font-weight: bold;
+}
 
 .loader {
     border: 22px solid #404040; 
