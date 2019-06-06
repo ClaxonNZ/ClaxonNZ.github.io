@@ -103,6 +103,14 @@ li {
 		color:white;
 		
 	}
+	
+	
+	.tab:hover{
+	
+		background-color:rgba(87,89,93, 1);
+	}
+
+	
 }
 
 
@@ -272,16 +280,12 @@ a {
 	border-radius:5px 5px 0px 0px;
 	-webkit-border-radius:5px 5px 0px 0px;
 	-moz-border-radius:5px 5px 0px 0px;
-	font-size:18px;
+	%font-size:18px;
 	color:white;
 	cursor:pointer;
 	
 }
 
-.tab:hover{
-	
-	background-color:rgba(87,89,93, 1);
-}
 
 
 
