@@ -151,6 +151,54 @@ li {
 	font-size:14px;
 }
 
+.fig-caption{
+	
+	margin-bottom:20px;
+	margin-top:10px;
+	width:100%;
+	text-align:center;
+	
+}
+
+
+.fig-caption div{
+	
+	font-size:14px;
+	margin-top:10px;
+	margin:auto;
+	width:70%;
+	min-width:600px;
+	text-align:left;
+}
+
+
+.fig-caption img{
+	width:70%; 
+	min-width:600px;
+	
+	
+}
+
+
+
+.fig-caption.small-fig div{
+	
+	font-size:14px;
+	margin-top:10px;
+	width:50%; 
+	min-width:400px;
+	text-align:left;
+	
+}
+
+
+.fig-caption.small-fig img{
+	width:50%; 
+	min-width:400px;
+	
+}
+
+
 
 
 
