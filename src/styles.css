@@ -23,9 +23,9 @@
 
 body { 
 	font-family: "Verdana"; 
-	min-width:500px;
+	%min-width:500px;
 	width:100%;
-	%min-width:1vw;
+	min-width:800px;
 	margin:0px;
 	%background-color:#FF6E19; 
 	background-color:#404040;
