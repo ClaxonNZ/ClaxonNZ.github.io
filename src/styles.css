@@ -180,21 +180,29 @@ li {
 }
 
 
+.fig-caption .quote{
+	font-style:italic;
+	width:70%; 
+	min-width:600px;
+}
+
 
 .fig-caption.small-fig div{
 	
 	font-size:14px;
 	margin-top:10px;
-	width:50%; 
+	width:75%; 
 	min-width:400px;
+	max-width:800px;
 	text-align:left;
 	
 }
 
 
 .fig-caption.small-fig img{
-	width:50%; 
+	%width:75%; 
 	min-width:400px;
+	max-width:400px;
 	
 }
 
@@ -282,7 +290,7 @@ cite * {
 
 
 
-a {
+a .break {
 	
 	text-decoration:none;
 	word-break: break-all;
@@ -442,8 +450,11 @@ option{
 #contacts span{
 	margin:auto;
 	text-align:left;
-	padding: 20px;
+	padding-left:20px;
+	padding-top:20px;
+	padding-bottom:20px;
 	min-width:350px;
+	line-height:1.5em;
 	width:40%;
 	
 }
