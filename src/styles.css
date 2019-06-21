@@ -290,7 +290,7 @@ cite * {
 
 
 
-a .break {
+a.break {
 	
 	text-decoration:none;
 	word-break: break-all;
