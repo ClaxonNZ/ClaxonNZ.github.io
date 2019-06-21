@@ -71,7 +71,7 @@ function init(){
 	
 	});
 	
-
+	abtesting();
 
 	
 	var references = {
@@ -384,24 +384,58 @@ that are leading climate change action.</span><cite val="num11"></cite>`,
 		num++;
 	}
 	
-	
-	// Display loading wheel until google forms loads
-	$("#google_forms").ready(function () {
-		$("#google_forms_loader").hide(0);
-		$("#google_forms").show(0);
-	});
-	$("#google_forms").load(function () {
-		$("#google_forms_loader").hide(0);
-		$("#google_forms").show(100);
-	});
-	
-	
-	
+
    
 
 }
 
 
+// Randomly select the title of the page and upload the corresponding google form
+function abtesting(){
+
+
+	var formNumber = Math.ceil(Math.random() * 2);
+	console.log("Random number", formNumber);
+	
+	
+	var mainTitle = "Take Action";
+	var googleFormID = "";
+	switch(formNumber){
+	
+	
+		case 1:
+		
+			mainTitle = "Take Action";
+			googleFormID = "https://docs.google.com/forms/d/e/1FAIpQLSd4BtvRRGAbboetam79RAJtduWNO2MK84UovRNSCXfSTKFUTw/viewform?embedded=true";
+			break;
+			
+		case 2:
+			mainTitle = "Make Your Voice Count";
+			googleFormID = "https://docs.google.com/forms/d/e/1FAIpQLSd9_tNFzOM9K1SYv38ek6TmXx-gUoZUt-JqI6ZkOzqMRFXcTg/viewform?embedded=true";
+			break;
+	
+	}
+	
+	// Title
+	$("#MainTitle").html(mainTitle);
+	
+	
+	// Google forms
+	$("#googleforms_cont").append(`<iframe id="google_forms" src="` + googleFormID + `" width="90%" height="1000px" style="display:none;" frameborder="0" marginheight="0" marginwidth="0"></iframe>`);
+								
+	document.getElementById("google_forms").onload= function() {
+		$("#google_forms_loader").hide(0);
+		$("#google_forms").show(0);
+	}
+	
+
+	
+	
+	
+	
+	
+
+}
 
 
 function getStatementTemplate(index, summary, crisis){
@@ -519,7 +553,7 @@ function getReferencesTemplate(num, desc, link){
 				<div class="display-div">
 
 						
-						<h1> Take Action  </h1>
+						<h1 id="MainTitle"> Take Action  </h1>
 								
 						<div class="caption-div alarmingfont">
 							
@@ -541,8 +575,8 @@ function getReferencesTemplate(num, desc, link){
 									<div title="Loading forms..." class="loader" style="margin:auto"></div>
 								</div>
 								
-								<iframe id="google_forms" src="https://docs.google.com/forms/d/e/1FAIpQLSd4BtvRRGAbboetam79RAJtduWNO2MK84UovRNSCXfSTKFUTw/viewform?embedded=true" width="90%" height="1000px" style="display:none;" frameborder="0" marginheight="0" marginwidth="0"></iframe>
-								
+								<div id="googleforms_cont">
+								</div>
 	
 								
 								<br><br>
