@@ -292,6 +292,13 @@ cite * {
 
 a.break {
 	
+	word-break: break-all;
+	
+}
+
+
+a.reference {
+	
 	text-decoration:none;
 	word-break: break-all;
 	
@@ -415,7 +422,7 @@ option{
 
 .caption-div{
 	width:80%;
-	min-width:400px;
+	min-width:700px;
 	max-width:1200px;
 	text-align:justify; 
 	margin:auto; 
@@ -453,7 +460,7 @@ option{
 	padding-left:20px;
 	padding-top:20px;
 	padding-bottom:20px;
-	min-width:350px;
+	min-width:700px;
 	line-height:1.5em;
 	width:40%;
 	
