@@ -33,10 +33,12 @@
 function init(){
 
 
-	loadCSV("data/updatedAt.csv", function(result) {
+	loadCSV("data/updatedAt.csv", function(dateResult) {
+	
+		console.log(dateResult);
 	
 		// Update message at top
-		$("#updateDateNumberSign").html(`As of ` + result.datetime + `, ` + result.nrows + ` people have signed.`);
+		$("#updateDateNumberSign").html(`As of ` + dateResult.datetime + `, ` + dateResult.nrows + ` people have signed.`);
 		
 	
 	
