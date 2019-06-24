@@ -22,7 +22,7 @@
 
 
 body { 
-	font-family: "Verdana"; 
+	font-family: "Source Sans Pro", "Verdana"; 
 	%min-width:500px;
 	width:100%;
 	min-width:800px;
@@ -148,7 +148,7 @@ li {
 
 
 .smallfont{
-	font-size:14px;
+	font-size:16px;
 }
 
 .fig-caption{
@@ -241,7 +241,7 @@ cite * {
 	
 	width:100%;
 	padding: 10;
-	font-size:14px;
+	font-size:16px;
 	text-align:left;
 	
 }
@@ -436,6 +436,7 @@ option{
 }
 
 .caption-div{
+	
 	width:80%;
 	min-width:700px;
 	max-width:1200px;
@@ -446,6 +447,11 @@ option{
 	
 }
 
+
+h1 {
+	font-family: "Oswald", "Arial"; 
+	
+}
 
 
 
