@@ -32,8 +32,135 @@
 
 function init(){
 
+	loadCSV("data/signatories.csv", function(result) {
+	
+	
+		console.log(result);
+		
+		// Character limits
+		var max_name_length = 50;
+		var max_institute_length = 50;
+		
+		
+		// Update message at top
+		var d = new Date();
+		var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+		var date_formatted =  d.getDate() + " " + months[d.getMonth()] + " " + d.getFullYear();
+		$("#updateDateNumberSign").html(`As of ` + date_formatted + `, ` + result.nrows + ` people have signed.`);
+		
+		// Render the table
+		var rows = 			`<tr style="text-align:left; color:white; background-color:#FF6E19">
+								<td></td>		
+								<td>Name</td>		
+								<td>Institute</td>		
+							</tr>`;
+							
+							
+							
+		for (var i = 0; i < result.nrows; i ++){
+		
+			var name = result.Title[i] + " " + result.Name[i].trim();
+			var institute = result.Institute[i].trim();
+			var title = name + (institute == "" ? "" : " (" + institute + ")");
+			
+			if (name.length >= max_name_length) name = name.substring(0, max_name_length - 3) + "...";
+			if (institute.length >= max_institute_length) institute = institute.substring(0, max_institute_length - 3) + "...";
+		
+			rows += `<tr  title="` + title + `">
+						<td>` + (i+1) + `</td>	<td style="">` + name + `</td>
+						<td>` + institute  + `</td>		
+					 </tr>`;
+		
+		}
+		
+		
+		
+		
+		$("#signatories").append(rows);
+		
+		
+		
+	});
+
+}
 
 
+
+// Loads a csv file and returns as an object
+function loadCSV(url, resolve = function(result) { }){
+    
+    console.log("Trying to open", url);
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          
+            if (xhttp == null || xhttp.responseXML == "") return resolve( {error: "Error: cannot open " + url});
+
+            //console.log("xhttp.responseText", xhttp.responseText);
+            var csvString = xhttp.responseText.split("\n");
+			if (csvString.length == 0)  return resolve( {error: "Error: empty csv file detected at " + url} );
+			
+			
+			var CSV_obj = {};
+			var column_names = [];
+			
+			
+			// Parse the file
+			var haveParsedHeader = false;
+			var nrows = 0;
+			for (var i = 0; i < csvString.length; i ++){
+				var line = csvString[i].trim();
+				if (line == "") continue;
+				
+				var splitLine = line.split(",");
+				
+				
+				
+				
+				var rowIsHeader = false;
+				for (var j = 0; j < splitLine.length; j ++){
+				
+					// Parse the header
+					if (!haveParsedHeader){
+						rowIsHeader = true;
+						
+						column_names.push(splitLine[j]);
+						CSV_obj[splitLine[j]] = [];
+						
+						
+
+					
+					} else {
+					
+						var value = splitLine[j];
+						var colName = column_names[j];
+						if (colName == null)  return resolve( {error: "Error: too many columns in row " + i + " of file " + url} );
+						
+						CSV_obj[colName].push(value);
+						
+						
+					
+					}
+					
+				}
+				
+				if (rowIsHeader) haveParsedHeader = true;
+				else nrows ++;
+			
+			
+			}
+            
+
+			CSV_obj.nrows = nrows;
+			return resolve(CSV_obj);
+
+           
+        }
+    };
+    xhttp.open("GET", url, true);
+    xhttp.send();
+    
+    
 }
 
 
@@ -87,38 +214,17 @@ function init(){
 						
 
 							<div style="text-align:center; margin-top:-20px">This page represents individual endorsements and is updated periodically. 
-							As of June 2019, 4 people have signed. </div> <br><br>
+							<span id="updateDateNumberSign"></span> </div> <br><br>
 							
 						
 							<div style="max-width:90%; margin:auto; font-weight:bold">We, the undersigned, urge the <b style="color:#FF6E19;">New Zealand House of Representatives</b> to declare a climate emergency, now. </div>
 							<br><br>
 
-							<table style="margin:auto;  text-align:left" id="signatories" cellpadding=7 cellspacing=0>
+							<table id="signatories" style="margin:auto;  text-align:left"  cellpadding=7 cellspacing=0>
 							
-								<tr style="text-align:left; color:white; background-color:#FF6E19">
-									<td></td>		
-									<td>Name</td>		
-									<td>Institute</td>		
-								</tr>
 								
 								
-								<tr>
-									<td>1</td>	<td style="">Gray Treadwell</td>		<td></td>		
-								</tr>
-								
-								<tr>
-									<td>2</td><td style="">Prof. Alexei Drummond</td>		<td>University of Auckland</td>		
-								</tr>
-								
-								<tr>
-									<td>3</td><td style="">Dr. Paul Mountfort </td>		<td>Auckland University of Technology</td>		
-								</tr>
-
-								
-								<tr>
-									<td>4</td><td style="">Mr. Jordan Douglas</td>		<td>University of Auckland</td>		
-								</tr>
-							
+		
 							
 							
 							</table>
