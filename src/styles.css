@@ -437,6 +437,8 @@ option{
 
 .caption-div{
 	
+	padding-left:50px;
+	padding-right:50px;
 	width:80%;
 	min-width:700px;
 	max-width:1200px;
