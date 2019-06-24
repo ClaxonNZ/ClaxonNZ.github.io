@@ -79,6 +79,10 @@ function init(){
 		$("#signatories").append(rows);
 		
 		
+		$("#signatories_loader").hide(0);
+		$("#signatories").show(0);
+		
+		
 		
 	});
 
@@ -220,7 +224,14 @@ function loadCSV(url, resolve = function(result) { }){
 							<div style="max-width:90%; margin:auto; font-weight:bold">We, the undersigned, urge the <b style="color:#FF6E19;">New Zealand House of Representatives</b> to declare a climate emergency, now. </div>
 							<br><br>
 
-							<table id="signatories" style="margin:auto;  text-align:left"  cellpadding=7 cellspacing=0>
+							
+							<div id="signatories_loader" style="width:100%; text-align:center;">
+								<div title="Loading forms..." class="loader" style="margin:auto"></div>
+								<br><br>
+							</div>
+							
+							
+							<table id="signatories" style="display:none; margin:auto;  text-align:left"  cellpadding=7 cellspacing=0>
 							
 								
 								
