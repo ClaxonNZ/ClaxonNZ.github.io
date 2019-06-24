@@ -59,8 +59,8 @@ function init(){
 							
 		for (var i = 0; i < result.nrows; i ++){
 		
-			var name = result.Title[i] + " " + result.Name[i].trim();
-			var institute = result.Institute[i].trim();
+			var name = result.title[i] + " " + result.name[i].trim();
+			var institute = result.institute[i].trim();
 			var title = name + (institute == "" ? "" : " (" + institute + ")");
 			
 			if (name.length >= max_name_length) name = name.substring(0, max_name_length - 3) + "...";
