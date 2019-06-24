@@ -32,6 +32,19 @@
 
 function init(){
 
+
+	loadCSV("data/updatedAt.csv", function(result) {
+	
+		// Update message at top
+		$("#updateDateNumberSign").html(`As of ` + result.datetime + `, ` + result.nrows + ` people have signed.`);
+		
+	
+	
+	});
+
+
+
+
 	loadCSV("data/signatories.csv", function(result) {
 	
 	
@@ -42,12 +55,7 @@ function init(){
 		var max_institute_length = 50;
 		
 		
-		// Update message at top
-		var d = new Date();
-		var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-		var date_formatted =  d.getDate() + " " + months[d.getMonth()] + " " + d.getFullYear();
-		$("#updateDateNumberSign").html(`As of ` + date_formatted + `, ` + result.nrows + ` people have signed.`);
-		
+	
 		// Render the table
 		var rows = 			`<tr style="text-align:left; color:white; background-color:#FF6E19">
 								<td></td>		
