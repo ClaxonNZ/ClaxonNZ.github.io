@@ -34,6 +34,10 @@
 
 function init(){
 
+	ITEMS_PER_PAGE = 100;
+	TABLE_DATA = null;
+	CURRENT_PAGE = 1;
+
 
 	loadCSV("data/updatedAt.csv", function(dateResult) {
 	
@@ -41,7 +45,7 @@ function init(){
 	
 		// Update message at top
 		$("#updateDateNumberSign").html(`As of ` + dateResult.datetime + `, ` + dateResult.nsign + ` people have signed.`);
-		
+
 	
 	
 	});
@@ -52,51 +56,102 @@ function init(){
 	loadCSV("data/signatories.csv", function(result) {
 	
 	
-		console.log(result);
-		
-		// Character limits
-		var max_name_length = 50;
-		var max_institute_length = 50;
+		TABLE_DATA = result;
+		console.log(TABLE_DATA);
+		renderTable(CURRENT_PAGE, TABLE_DATA, ITEMS_PER_PAGE);
 		
 		
-	
-		// Render the table
-		var rows = 			`<tr style="text-align:left; color:white; background-color:#FF6E19">
-								<td></td>		
-								<td>Name</td>		
-								<td>Institute</td>		
-							</tr>`;
-							
-							
-							
-		for (var i = 0; i < result.nrows; i ++){
-		
-			var name = result.title[i] + " " + result.name[i].trim();
-			var institute = result.institute[i].trim();
-			var title = name + (institute == "" ? "" : " (" + institute + ")");
-			
-			if (name.length >= max_name_length) name = name.substring(0, max_name_length - 3) + "...";
-			if (institute.length >= max_institute_length) institute = institute.substring(0, max_institute_length - 3) + "...";
-		
-			rows += `<tr  title="` + title + `">
-						<td>` + (i+1) + `</td>	<td style="">` + name + `</td>
-						<td>` + institute  + `</td>		
-					 </tr>`;
+		// Add buttons
+		var npages = Math.ceil(TABLE_DATA.nrows / ITEMS_PER_PAGE);
+		$("#pageChangeButtons").html("");
+		if (npages > 1){
+			$("#pageChangeButtons").append(getButtonTemplate(1, true));
+			for (var pageNum = 2; pageNum <= npages; pageNum++) $("#pageChangeButtons").append(getButtonTemplate(pageNum, false));
+			$("#pageChangeButtons").after("Page number");
 		
 		}
 		
 		
 		
 		
-		$("#signatories").append(rows);
-		
-		
-		$("#signatories_loader").hide(0);
-		$("#signatories").show(0);
-		
-		
 		
 	});
+
+}
+
+function setPage(setTo){
+
+	if (setTo == CURRENT_PAGE) return;
+	
+	$("#page" + setTo).addClass("current");
+	$("#page" + CURRENT_PAGE).removeClass("current");
+	CURRENT_PAGE = setTo;
+	
+	renderTable(CURRENT_PAGE, TABLE_DATA, ITEMS_PER_PAGE);
+
+}
+
+
+function getButtonTemplate(pageNum, current = false){
+
+	if (current) return `<span onclick="setPage(` + pageNum + `)" id="page` + pageNum + `" class="button current">` + pageNum + `</span> `;
+	return `<span onclick="setPage(` + pageNum + `)" id="page` + pageNum + `" class="button">` + pageNum + `</span> `;
+						
+							
+
+}
+
+
+function renderTable(pageNum, table_data, items_per_page){
+
+
+
+
+	// Character limits
+	var max_name_length = 50;
+	var max_institute_length = 50;
+	
+	
+
+	// Render the table
+	var rows = 			`<tr style="text-align:left; color:white; background-color:#FF6E19">
+							<td></td>		
+							<td>Name</td>		
+							<td>Institute</td>		
+						</tr>`;
+						
+						
+	
+    var firstEntry = (pageNum-1) * items_per_page;
+	var lastEntry = Math.min(firstEntry + items_per_page, table_data.nrows) -1;
+	for (var i = firstEntry; i <= lastEntry; i ++){
+	
+		var name = table_data.title[i] + " " + table_data.name[i].trim();
+		var institute = table_data.institute[i].trim();
+		var title = name + (institute == "" ? "" : " (" + institute + ")");
+		
+		if (name.length >= max_name_length) name = name.substring(0, max_name_length - 3) + "...";
+		if (institute.length >= max_institute_length) institute = institute.substring(0, max_institute_length - 3) + "...";
+	
+		rows += `<tr  title="` + title + `">
+					<td>` + (i+1) + `</td>	<td style="">` + name + `</td>
+					<td>` + institute  + `</td>		
+				 </tr>`;
+	
+	}
+	
+	
+	
+	$("#signatories").html("");
+	$("#signatories").append(rows);
+	
+	
+	$("#signatories_loader").hide(0);
+	$("#signatories").show(0);
+		
+
+
+
 
 }
 
@@ -259,9 +314,12 @@ function loadCSV(url, resolve = function(result) { }){
 							
 							</table>
 							
-							<br><br><br>
-							<div style="text-align:center">Page 1 of 1. </div> 
-								
+							<br><br>
+							
+							<div style="width:80%; margin:auto" id="pageChangeButtons"></div>
+							
+
+							
 								
 								
 							

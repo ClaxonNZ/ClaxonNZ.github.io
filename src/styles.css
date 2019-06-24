@@ -130,10 +130,19 @@ li {
 	border-radius:5px;
 	-webkit-border-radius:5px;
 	-moz-border-radius:5px;
-	padding: 10px 40px;
+	padding: 5px 15px;
 	color:white;
 	background-color:#404040;
 	cursor:pointer;
+	line-height:2.5em;
+}
+
+
+.button.current{
+	
+	color:white;
+	background-color:#FF6E19; 
+	cursor:auto;
 }
 
 
