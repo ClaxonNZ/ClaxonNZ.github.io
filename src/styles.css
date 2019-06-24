@@ -440,7 +440,7 @@ option{
 	padding-left:50px;
 	padding-right:50px;
 	width:80%;
-	min-width:700px;
+	min-width:600px;
 	max-width:1200px;
 	text-align:justify; 
 	margin:auto; 
@@ -513,44 +513,6 @@ h1 {
 	min-width:600px;
 	font-size:120%;
 	
-}
-
-@media (min-width:320px)  { 
-
-	/* smartphones, portrait iPhone, portrait 480x320 phones (Android) */ 
-	#signatories{
-		font-size:160%;
-	}
-}
-
-@media (min-width:480px)  { 
-
-	/* smartphones, Android phones, landscape iPhone */ 
-	#signatories{
-		font-size:160%;
-	}
-
-}
-
-@media (min-width:600px)  { 
-	/* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */ 
-	#signatories{
-		font-size:160%;
-	}
-
-}
-@media (min-width:801px)  { 
-	/* tablet, landscape iPad, lo-res laptops ands desktops */ 
-	#signatories{
-		font-size:150%;
-	}
-
-}
-@media (min-width:1025px) {
-	/* big landscape tablets, laptops, and desktops */ 
-	#signatories{
-		font-size:120%;
-	}
 }
 
 #signatories td{
