@@ -357,7 +357,7 @@ function getStatementTemplate(index, summary, crisis, directory = ""){
 			</td>
 		
 		
-			<td style="text-align:left"> 
+			<td style="width:100%; text-align:left"> 
 
 				<div title="Expand" class="summary" statement=` + index + `>` + summary + ` <span class="downTriange">&#9660;</span> <span style="display:none" class="upTriange">&#9650;</span> </div>
 			</td>
