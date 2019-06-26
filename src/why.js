@@ -331,7 +331,7 @@ that are leading climate change action.</span><cite val="num11"></cite>`,
 function getReferencesTemplate(num, desc, link){
 
 	var breaker = desc == "" ? "" : " |"; 
-	var link_html = link == null ? `` : (breaker + ` URL: <a target="_blank" href="` + link + `">` + link + `</a>`);
+	var link_html = link == null ? `` : (breaker + ` URL: <a class="reference" target="_blank" href="` + link + `">` + link + `</a>`);
 	
 	return `
 	
