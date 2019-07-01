@@ -479,7 +479,7 @@ h1 {
 #contacts{
 	width:100%; 
 	text-align:left;
-	
+	text-size-adjust: 140%;
 }
 
 
@@ -492,6 +492,7 @@ h1 {
 	%min-width:700px;
 	line-height:1.5em;
 	width:50%;
+	max-width:300px;
 	
 }
 
