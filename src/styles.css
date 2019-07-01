@@ -477,26 +477,38 @@ h1 {
 
 
 #contacts{
-	
-	margin:auto;
-	display: flex; 
-	flex-wrap: wrap;
 	width:100%; 
-	text-align:center;
+	text-align:left;
 	
 }
 
 
-#contacts span{
+#contacts td{
 	margin:auto;
-	text-align:left;
+	
 	padding-left:20px;
 	padding-top:20px;
 	padding-bottom:20px;
-	min-width:700px;
+	%min-width:700px;
 	line-height:1.5em;
-	width:40%;
+	width:50%;
 	
+}
+
+
+#contacts tr.right{
+	text-align:right;
+	
+}
+
+.personface {
+	width:300px;
+	float:right;
+}
+
+
+.personface.right {
+	float:left;
 }
 
 .contactname{
