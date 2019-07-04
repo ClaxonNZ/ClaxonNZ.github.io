@@ -496,6 +496,16 @@ h1 {
 	
 }
 
+.video_div{
+	text-align:center;
+	margin-bottom:20px;
+}
+
+.video_caption{
+	font-size:120%;
+	text-align:center;
+}
+
 
 #contacts tr.right{
 	text-align:right;
