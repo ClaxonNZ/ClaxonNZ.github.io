@@ -51,7 +51,11 @@ function init(){
 
 function leaveWebsite(){
 
-	window.close();
+	if (typeof window.home == 'function'){
+		window.home();
+	} else if (document.all) { // IE 
+		window.location.href = "about:home";
+	}
 
 }
 

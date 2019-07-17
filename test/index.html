@@ -77,8 +77,8 @@ function init(){
 	if (location.href.indexOf("?") != -1){
 		var search = location.search.substring(1);
 		var JSONurl = JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}')
-		if (JSONurl.r != null){
-			console.log("response", JSONurl.r);
+		if (JSONurl.r == "yes"){
+			userSaysYes();
 		}
 		
 	}
