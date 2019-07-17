@@ -1,0 +1,175 @@
+
+<html>
+<head>
+
+
+
+
+
+<title>Claxon Test Unit</title>
+<link rel="icon" href="../../src/Images/logo.png">
+<meta name="viewport" content="width=1000">
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="description" content="Urge the New Zealand government to declare an environmental emergency." />
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="../../src/styles.css">
+<!--<link rel="stylesheet" type="text/css" media="screen and (max-device-width: 1200px)" href="src/mobilestyles.css" />-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-141611816-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-141611816-1');
+</script>
+
+
+<script language='JavaScript' type='text/JavaScript'>
+
+
+function init(){
+
+	// Google forms 
+	var googleFormID = "https://docs.google.com/forms/d/e/1FAIpQLSdfumJoBabWjBeOI9AfaaeUNACmp7FABaVNNOinIWpbd4wlqQ/viewform?embedded=true";
+				
+	$("#socialmedia_cont").append(`<iframe id="google_forms" src="` + googleFormID + `" width="90%" height="700px" frameborder="0" marginheight="0" marginwidth="0"></iframe>`);
+		
+
+			
+	document.getElementById("google_forms").onload= function() {
+		$("#google_forms_loader").hide(0);
+		$("#socialmedia_cont").show(0);
+	}
+	
+
+}
+
+
+function leaveWebsite(){
+
+	window.close();
+
+}
+
+
+
+</script>
+
+</head>
+
+<body onload="init()">
+	<div id="screenContainer" style="position:relative">
+		<div id="screen" style="opacity:1;">
+
+
+				
+
+			<div id="main">
+				
+				
+				<div id="header" class="header" style="width:100%;">
+					<img src="../../src/Images/title.svg" style="width:500px">
+				</div>
+
+
+		
+				<div style="background-color:white">
+					<div class="tabs-bg"  style="width:100%;">
+					
+						<div style="text-align:center; margin-right:0px;">
+							
+							<a href="../../"> <span class="tab">Home</span></a>
+							<a href="../../why/"> <span class="tab">Why</span></a>
+							<a href="../../about/"> <span class="tab">About</span></a>
+							<a href="../../news/"> <span class="tab">News</span></a>
+							<a href="../../videos/"> <span class="tab">Videos</span></a>
+							<a href="../../signatories/"> <span class="tab">Signatories</span></a>
+							
+						</div>
+					</div>
+				</div>
+
+				<br><br>
+				
+				
+
+				
+
+				<div class="display-div">
+
+						
+						
+							<h1>  </h1>
+							
+							<div class="caption-div" style="text-align:center; line-height:1.5em">
+							
+								
+								
+							
+								<div id="willyousign">
+							
+									We are sorry we could not get your signature. We would greatly appreciate if you could tell us why. <br><br>
+									
+										
+									<a style="text-decoration:none" href="../?r=yes"><span class="inverse_button">I have changed my mind</span></a>
+									
+									<span class="inverse_button" onclick="leaveWebsite()">Leave website</span>
+
+								</div>
+								
+								
+								<br><br>
+								
+								
+								<div id="google_forms_loader" style="width:100%; text-align:center;">
+									<div title="Loading forms..." class="loader" style="margin:auto"></div>
+									<br><br>
+								</div>
+									
+								<div id="socialmedia_cont" style="display:none"> 
+									
+								</div>
+							
+							
+							<br><br><br><br>
+							</div>
+						
+						
+						
+								
+								
+							
+							<br><br><br><br>
+					</div>
+				</div>
+					
+					
+					
+					
+					
+
+	
+	
+	
+	<br> <br> <br> <br> <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	
+
+
+	
+	
+		<div class="header orangebg">
+			<img src="../../src/Images/claxonnz.svg" style="width:200px">
+		</div>
+
+
+		</div>
+	</div>
+
+
+</div>
+</body>
+</html>

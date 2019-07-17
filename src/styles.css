@@ -155,6 +155,42 @@ li {
 }
 
 
+#willyousign{
+	width:80%; 
+	padding: 20px; 
+	margin:auto; 
+	margin-top:20px; 
+	background-color:#404040; 
+	color:white; 
+	border-style:solid;
+	border-radius:20px;
+	-webkit-border-radius:20px;
+	-moz-border-radius:20px;
+	
+}
+
+
+.inverse_button{
+	border-radius:5px;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	padding: 5px 15px;
+	color:white;
+	background-color:#FF6E19;
+	cursor:pointer;
+	line-height:2.5em;
+	margin-left:20px;
+	margin-right:20px;
+	
+}
+
+
+.inverse_button:hover{
+	
+	color:#FF6E19;
+	background-color:white; 
+	
+}
 
 
 .smallfont{
