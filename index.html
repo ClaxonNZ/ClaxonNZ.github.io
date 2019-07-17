@@ -28,7 +28,7 @@
 	<!--<link rel="stylesheet" type="text/css" media="screen and (max-device-width: 1200px)" href="src/mobilestyles.css" />-->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 	<script src="src/why.js"></script>
-
+	<script src="src/util.js"></script>
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-141611816-1"></script>
@@ -76,16 +76,19 @@ function init(){
 	abtesting();
 	
 	addEmergencySection();
+	
+	addNumSignatories();
 
    
 
 }
 
 
+
 // Randomly select the title of the page and upload the corresponding google form
 function abtesting(){
 
-
+	
 	var formNumber = Math.ceil(Math.random() * 2);
 	console.log("Random number", formNumber);
 	
@@ -109,7 +112,7 @@ function abtesting(){
 	}
 	
 	// Title
-	$("#MainTitle").html(mainTitle);
+	//$("#MainTitle").html(mainTitle);
 	
 	
 	// Google forms
@@ -130,7 +133,25 @@ function abtesting(){
 }
 
 
+function addNumSignatories(){
 
+
+
+	loadCSV("signatories/data/updatedAt.csv", function(dateResult) {
+	
+		console.log(dateResult);
+	
+		// Update message at top
+		$("#MainTitle").html(`Add your voice and join the ` + dateResult.nsign + ` other signatories`);
+
+	
+	
+	});
+
+
+
+
+}
 
 
 
@@ -220,10 +241,16 @@ function abtesting(){
 								
 								
 						<div class="caption-div alarmingfont">
+						
+							
+						
 							
 							The scientific consensus is that the world stands on the verge of unprecedented environmental and climate catastrophe for which we are little prepared, and which affords us only a few years for mitigating action.
 
 							<br><br>
+							
+							
+							
 
 							
 							We, the undersigned, urge the <b style="color:#FF6E19;">New Zealand House of Representatives</b> to declare a climate emergency, now. 
