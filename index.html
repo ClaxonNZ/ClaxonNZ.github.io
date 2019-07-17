@@ -112,7 +112,7 @@ function abtesting(){
 	}
 	
 	// Title
-	//$("#MainTitle").html(mainTitle);
+	$("#MainTitle").html(mainTitle);
 	
 	
 	// Google forms
@@ -142,9 +142,11 @@ function addNumSignatories(){
 		console.log(dateResult);
 	
 		// Update message at top
-		$("#MainTitle").html(`Add your voice and join the ` + dateResult.nsign + ` other signatories`);
-
-	
+		$("#addYourVoice").html(`Add your voice to <a href="http://www.claxon.nz/signatories">the ` + dateResult.nsign + `</a>, all urging the <b style="color:#FF6E19;">New Zealand House of Representatives</b> to declare a climate emergency.`);
+		
+							
+							
+		
 	
 	});
 
@@ -251,9 +253,7 @@ function addNumSignatories(){
 							
 							
 							
-
-							
-							We, the undersigned, urge the <b style="color:#FF6E19;">New Zealand House of Representatives</b> to declare a climate emergency, now. 
+							<div id="addYourVoice"></div>
 							
 							<br><br>
 								
