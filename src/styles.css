@@ -178,9 +178,10 @@ li {
 	color:white;
 	background-color:#FF6E19;
 	cursor:pointer;
-	line-height:2.5em;
+	line-height:3.5em;
 	margin-left:20px;
 	margin-right:20px;
+	word-break: normal;
 	
 }
 
