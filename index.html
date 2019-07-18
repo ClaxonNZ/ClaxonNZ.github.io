@@ -73,11 +73,23 @@ function init(){
 
 	
 	console.log("width",  $(document).width(), screen.width, screen.height);
-	abtesting();
 	
-	addEmergencySection();
+	if (location.href.indexOf("?") != -1){
+		var search = location.search.substring(1);
+		var JSONurl = JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}')
+		if (JSONurl.r == "yes"){
+			userSaysYes();
+		}
+		
+	}
+		
+
 	
 	addNumSignatories();
+	
+	addEmergencySection("");
+	
+	
 
    
 
@@ -101,11 +113,15 @@ function abtesting(){
 		case 1:
 		
 			mainTitle = "Add Your Voice";
+			$("#formsAndLoaderDiv").show(0);
+			$("#willyousign_ab").hide(0);
 			googleFormID = "https://docs.google.com/forms/d/e/1FAIpQLSd4BtvRRGAbboetam79RAJtduWNO2MK84UovRNSCXfSTKFUTw/viewform?embedded=true";
 			break;
 			
 		case 2:
-			mainTitle = "";
+			mainTitle = "Add Your Voice";
+			//$("#formsAndLoaderDiv").hide(0);
+			$("#willyousign_ab").show(0);
 			googleFormID = "https://docs.google.com/forms/d/e/1FAIpQLSf5PsWn85-UMgpFJz3bOtGxq_gJsZvKnWn1MMODYjBULTRqGQ/viewform?embedded=true";
 			break;
 	
@@ -121,6 +137,8 @@ function abtesting(){
 	document.getElementById("google_forms").onload= function() {
 		$("#google_forms_loader").hide(0);
 		$("#socialmedia_cont").show(0);
+
+		
 	}
 	
 
@@ -142,9 +160,10 @@ function addNumSignatories(){
 		console.log(dateResult);
 	
 		// Update message at top
-		$("#addYourVoice").html(`Add your voice to <a href="http://www.claxon.nz/signatories">the ` + dateResult.nsign + `</a>, all urging the <b style="color:#FF6E19;">New Zealand House of Representatives</b> to declare a climate emergency.`);
-		
-							
+		var msg = `Add your voice to <a style="color:#FF6E19" href="http://www.claxon.nz/signatories">the ` + dateResult.nsign + `</a>, all urging the <b style="color:#FF6E19;">New Zealand House of Representatives</b> to declare a climate emergency.`;
+		$("#addYourVoice").html(msg);
+		$("#willyousign_contents").html(msg);
+		abtesting();
 							
 		
 	
@@ -156,7 +175,12 @@ function addNumSignatories(){
 }
 
 
+function userSaysYes(){
 
+	$("#willyousign_hider").hide(500);
+	$("#formsAndLoaderDiv").show(500);
+
+}
 
 
 
@@ -186,7 +210,7 @@ function addNumSignatories(){
 					<div class="tabs-bg" style="width:100%;">
 					
 						<div style="text-align:center; margin-right:0px;">
-							<span class="tab selected">Home</span>
+							<span class="tab selected">Sign here</span>
 							<a href="why/"> <span class="tab">Why</span></a>
 							<a href="about/"> <span class="tab">About</span></a>
 							<a href="news/"> <span class="tab">News</span></a>
@@ -244,33 +268,52 @@ function addNumSignatories(){
 								
 						<div class="caption-div alarmingfont">
 						
-							
 						
-							
 							The scientific consensus is that the world stands on the verge of unprecedented environmental and climate catastrophe for which we are little prepared, and which affords us only a few years for mitigating action.
 
-							<br><br>
 							
-							
-							
-							<div id="addYourVoice"></div>
-							
-							<br><br>
-								
+							<div id="willyousign_hider">
+								<div class="willyousign_wrapper" id="willyousign_ab" style="display:none">
 								
 									
+									<div id="willyousign_contents"></div>
+										
+									<span class="inverse_button" onclick="userSaysYes()">Yes</span>
+									
+									<a style="text-decoration:none" href="no/"><span class="inverse_button">No</span></a> 
+									
+									<a style="text-decoration:none" href="#whyIsThisAnEmergency"><span class="inverse_button">Maybe</span></a> 
+				
 								
-								
-								<div id="google_forms_loader" style="width:100%; text-align:center;">
-									<div title="Loading forms..." class="loader" style="margin:auto"></div>
-									<br><br>
 								</div>
-									
-								<div id="socialmedia_cont" style="display:none"> 
-									
+							</div>
+							
+							
+							<br><br>
+							
+							
 	
-								</div>
 								
+									
+								<div id="formsAndLoaderDiv" style="display:none">
+								
+															
+									<div id="addYourVoice"></div>
+									
+									<br><br>
+								
+								
+								
+									<div id="google_forms_loader" style="width:100%; text-align:center;">
+										<div title="Loading forms..." class="loader" style="margin:auto"></div>
+										<br><br>
+									</div>
+										
+									<div id="socialmedia_cont" style="display:none"> 
+										
+		
+									</div>
+								</div>
 								
 								
 								
@@ -290,7 +333,7 @@ function addNumSignatories(){
 					
 					
 					
-					<div class="display-div">
+					<div id="whyIsThisAnEmergency" class="display-div">
 
 						
 						<h1>  Why this is an emergency  </h1>
@@ -315,7 +358,10 @@ function addNumSignatories(){
 							
 							<table id="mission_table" cellspacing=0 style="min-width:400px; background-color: white; text-align:center; width:90%; margin:auto"></table>
 							
+							
 							<br><br>
+							<a style="text-decoration:none" href="http://www.claxon.nz/?r=yes"><span class="button">Click here to sign the letter</span></a> 
+							 <br><br>
 							
 						</div>
 
